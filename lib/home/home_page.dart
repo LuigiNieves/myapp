@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:myapp/models/character.dart';
 import 'package:myapp/screens/detail_character_screen.dart';
 import 'package:myapp/screens/home_screen.dart';
-import 'package:myapp/models/character.dart';
 import 'package:myapp/provider/character_provider.dart';
 
 class MyHomePage extends ConsumerStatefulWidget {
@@ -17,17 +17,26 @@ class _MyHomePageState extends ConsumerState<MyHomePage> {
   Character? selectedCharacter;
 
   @override
+  void initState() {
+    super.initState();
+    // Cargar personajes al iniciar la pantalla
+    Future.microtask(() {
+      ref.read(characterListProvider.notifier).loadCharacters();
+    });
+  }
+
+  @override
   Widget build(BuildContext context) {
-    final characterAsync = ref.watch(characterListProvider);
+    final characterState = ref.watch(characterListProvider);
 
     Widget content;
 
-    if (characterAsync.isLoading) {
+    if (characterState.isLoading) {
       content = const Center(child: CircularProgressIndicator());
-    } else if (characterAsync.hasError) {
-      content = Center(child: Text('Error: ${characterAsync.error}'));
+    } else if (characterState.errorMessage != null) {
+      content = Center(child: Text('Error: ${characterState.errorMessage}'));
     } else {
-      final characters = characterAsync.value!;
+      final characters = characterState.characters;
       content = selectedCharacter != null
           ? CharacterDetailScreen(
               character: selectedCharacter!,
