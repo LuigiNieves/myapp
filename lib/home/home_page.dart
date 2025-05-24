@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:myapp/models/character.dart';
+import 'package:myapp/screens/Search_screen.dart';
 import 'package:myapp/screens/detail_character_screen.dart';
 import 'package:myapp/screens/home_screen.dart';
 import 'package:myapp/provider/character_provider.dart';
+import 'package:myapp/screens/profile_screen.dart';
 
 class MyHomePage extends ConsumerStatefulWidget {
   const MyHomePage({super.key});
@@ -61,8 +63,8 @@ class _MyHomePageState extends ConsumerState<MyHomePage> {
       body: _selectedIndex == 0
           ? content
           : _selectedIndex == 1
-              ? const Center(child: Text('Search Screen'))
-              : const Center(child: Text('Profile Screen')),
+              ? const Center(child:  SearchScreen())
+              : const Center(child: ProfileScreen()),
       bottomNavigationBar: BottomNavigationBar(
         items: const [
           BottomNavigationBarItem(icon: Icon(Icons.home), label: 'Home'),

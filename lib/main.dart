@@ -2,7 +2,9 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:myapp/firebase_options.dart';
-import 'package:myapp/screens/Auth/auth_validator_screen.dart';
+import 'package:myapp/home/home_page.dart';
+// import 'package:myapp/screens/Auth/auth_validator_screen.dart';
+// import 'package:myapp/screens/Auth/login/login_screen.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -23,7 +25,7 @@ class MainApp extends ConsumerWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       theme: ThemeData(primarySwatch: Colors.blue),
-      home: AuthValidatorScreen(),
+      home: MyHomePage(),
       title: 'Rick and morty app',
     );
   }
