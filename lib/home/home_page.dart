@@ -57,7 +57,7 @@ class _MyHomePageState extends ConsumerState<MyHomePage> {
     }
 
     return Scaffold(
-      appBar: AppBar(title: const Text('Rick and Morty App')),
+      appBar: AppBar(title: const Text('Rick and Morty App2')),
       body: _selectedIndex == 0
           ? content
           : _selectedIndex == 1

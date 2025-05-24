@@ -13,20 +13,33 @@ class CharacterDetailScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Column(
-      children: [
-        IconButton(icon: Icon(Icons.arrow_back), onPressed: () => onBack()),
-        Image.network(character.imageUrl, height: 200),
-        Text(
-          character.name,
-          style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
+    return Center(
+      child: Card(
+        shadowColor: Colors.grey,
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            IconButton(
+              icon: Icon(Icons.arrow_back),
+              onPressed: () => onBack(),
+            ),
+            Image.network(character.imageUrl, height: 200),
+            Text(
+              character.name,
+              style: TextStyle(
+                fontSize: 24,
+                fontWeight: FontWeight.bold,
+              ),
+            ),
+            const SizedBox(height: 8),
+            Text('Status: ${character.status}'),
+            Text('Species: ${character.species}'),
+            Text('Gender: ${character.gender}'),
+            Text('Origin: ${character.originName}'),
+            Text('Location: ${character.locationName}'),
+          ],
         ),
-        Text('Status: ${character.status}'),
-        Text('Species: ${character.species}'),
-        Text('Gender: ${character.gender}'),
-        Text('Origin: ${character.originName}'),
-        Text('Location: ${character.locationName}'),
-      ],
+      ),
     );
   }
 }

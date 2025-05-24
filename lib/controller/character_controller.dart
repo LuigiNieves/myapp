@@ -1,5 +1,5 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:myapp/controller/character_list_State.dart';
+import 'package:myapp/controller/character_list_state.dart';
 import 'package:myapp/data/character_service.dart';
 
 class CharacterController extends StateNotifier<CharacterListState> {
